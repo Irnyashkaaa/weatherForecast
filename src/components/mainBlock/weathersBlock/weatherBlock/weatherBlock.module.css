@@ -1,0 +1,7 @@
+.weatherBlock {
+    margin: 10px 40px;
+    width: fit-content;
+    background-color: beige;
+    border: 2px solid rgb(199, 186, 130);
+    padding: 10px;
+}

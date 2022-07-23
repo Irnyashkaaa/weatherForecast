@@ -1,0 +1,11 @@
+.header {
+    background-color: rgb(44, 43, 43);
+    color: aliceblue;
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    letter-spacing: 6px;
+}

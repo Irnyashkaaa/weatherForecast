@@ -1,0 +1,7 @@
+.mainBlock {
+    display: flex;
+    justify-content: space-around;
+}
+.weathersBlock {
+    display: flex;
+}
