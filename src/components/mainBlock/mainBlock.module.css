@@ -1,7 +1,20 @@
 .mainBlock {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 .weathersBlock {
     display: flex;
+}
+.form {
+    margin: 40px;
+}
+.formInput {
+    font-size: 30px;
+    padding: 5px;
+}
+.formButton {
+    font-size: 30px;
+    padding: 5px;
+    margin: auto 15px;
 }

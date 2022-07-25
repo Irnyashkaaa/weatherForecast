@@ -77,18 +77,34 @@ const App: React.FC = () => {
   }
 
   const [currentWeather, setCurrentWeather] = useState<currentWeatherType>(initWeather)
+  const [todayWeather, setTodayWeather] = useState<currentWeatherType>(initWeather)
+  const [tomorrowWeather, setTomorrowWeather] = useState<currentWeatherType>(initWeather)
+  const [weekWeather, setWeekWeather] = useState<currentWeatherType>(initWeather)
+  const [currentCity, setCurrentCity] = useState<string>('Lviv')
 
   useEffect(() => {
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=Lviv&appid=0b2f7cf9f1b1ce9cf33928cfb6802061&units=metric`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=0b2f7cf9f1b1ce9cf33928cfb6802061&units=metric`)
     .then (response => {
       setCurrentWeather(response.data)
     })
-  }, [])
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&exclude=minutely&appid=0b2f7cf9f1b1ce9cf33928cfb6802061&units=metric`)
+    .then (response => {
+      setTodayWeather(response.data)
+    })
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=0b2f7cf9f1b1ce9cf33928cfb6802061&units=metric&exclude=hourly`)
+    .then (response => {
+      setTomorrowWeather(response.data)
+    })
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=0b2f7cf9f1b1ce9cf33928cfb6802061&units=metric&exclude=daily`)
+    .then (response => {
+      setWeekWeather(response.data)
+    })
+  }, [currentCity])
 
   return (
     <div className="App">
       <Header initWeather={currentWeather}/>
-      <MainBlock currentWeather={currentWeather}/>
+      <MainBlock currentCity={currentCity} setCurrentCity={setCurrentCity} currentWeather={currentWeather} todayWeather={todayWeather} tomorrowWeather={tomorrowWeather} weekWeather={weekWeather}/>
     </div>
   );
 }
